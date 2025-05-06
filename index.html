@@ -55,13 +55,13 @@
 
     .slider {
       display: flex;
-      transition: transform 1s ease-in-out;
-      width: 500%;
+      transition: transform 5s ease-in-out;
+      width: 100%;
     }
 
     .slider img {
       width: 100%;
-      height: auto;
+      height: 50%;
       object-fit: cover;
     }
 
@@ -218,8 +218,8 @@
       <img src="slide5.jpg" alt="Slide 5">
     </div>
     <div class="slider-buttons">
-      <button onclick="prevSlide()">Prev</button>
-      <button onclick="nextSlide()">Next</button>
+      <button onclick="prevSlide()"><</button>
+      <button onclick="nextSlide()">></button>
     </div>
   </div>
 
@@ -237,18 +237,18 @@
     <div class="games-list">
       <div class="game-card">
         <img src="https://via.placeholder.com/150" alt="Slot Game 1">
-        <p>Winrate: 94%</p>
-        <div class="winrate">Loading...</div>
+        <p>94%</p>
+        <div class="winrate"></div>
       </div>
       <div class="game-card">
         <img src="https://via.placeholder.com/150" alt="Slot Game 2">
-        <p>Winrate: 93%</p>
-        <div class="winrate">Loading...</div>
+        <p>93%</p>
+        <div class="winrate"></div>
       </div>
       <div class="game-card">
         <img src="https://via.placeholder.com/150" alt="Slot Game 3">
-        <p>Winrate: 96%</p>
-        <div class="winrate">Loading...</div>
+        <p>96%</p>
+        <div class="winrate"></div>
       </div>
     </div>
   </section>
@@ -279,4 +279,41 @@
       showSlide(slideIndex - 1);
     }
 
-    setInterval(nextSlide,
+    setInterval(nextSlide, 3000);
+
+    function randomUsername() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let username = '';
+      for (let i = 0; i < 3; i++) {
+        username += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return username + '****';
+    }
+
+    function randomAmount(min, max, step) {
+      return Math.floor(Math.random() * ((max - min) / step)) * step + min;
+    }
+
+    function addWithdraw() {
+      const list = document.getElementById("withdraw-list");
+      const div = document.createElement("div");
+      div.className = "withdraw-item";
+      const username = randomUsername();
+      const amount = randomAmount(50000, 2000000, 1000);
+      const type = Math.random() < 0.2 ? "Deposit" : "Withdraw";
+      const isNew = Math.random() < 0.3 ? " NEW" : "";
+      div.textContent = `${username} ${type} Rp ${amount.toLocaleString('id-ID')}${isNew}`;
+      
+      if (isNew) div.classList.add("new");
+
+      list.appendChild(div);
+      while (list.children.length > 5) {
+        list.removeChild(list.children[0]);
+      }
+    }
+
+    setInterval(addWithdraw, 2000);
+    for (let i = 0; i < 10; i++) addWithdraw();
+  </script>
+</body>
+</html>
