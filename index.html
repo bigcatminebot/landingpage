@@ -52,8 +52,8 @@
   display: flex;
   width: 500vw; /* Sesuai jumlah gambar */
   transition: transform 0.5s ease-in-out; /* Tambahkan ini */
-}
     }
+    
     .slider img {
       width: 100vw;
       height: auto;
@@ -70,6 +70,7 @@
       justify-content: space-between;
       transform: translateY(-50%);
     }
+    
 
     .slider-buttons button {
       background: rgba(0, 0, 0, 0.5);
@@ -79,7 +80,24 @@
       cursor: pointer;
       font-size: 18px;
     }
-
+.slider-dots {
+  text-align: center;
+  margin-top: 10px;
+}
+.slider-dots span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 5px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.slider-dots span.active {
+  background-color: #ff9900;
+}
+    
     .benefits {
       padding: 40px 20px;
       text-align: center;
@@ -214,6 +232,7 @@
       <img src="https://files.sitestatic.net/banners/2025030919021600000050f9db1f86__MADU88__1920x430.png" alt="Slide 5">
     </div>
     <div class="slider-buttons">
+      <div class="slider-dots" id="slider-dots"></div>
       <button onclick="prevSlide()">&#10094;</button>
       <button onclick="nextSlide()">&#10095;</button>
     </div>
@@ -276,7 +295,7 @@ const totalSlides = slider.children.length;
 
 let transitionInProgress = false;
 
-ffunction showSlide(index) {
+function showSlide(index) {
   if (transitionInProgress) return;
   transitionInProgress = true;
 
@@ -286,6 +305,7 @@ ffunction showSlide(index) {
     transitionInProgress = false;
   }, 600); // 600ms cukup untuk transisi 0.5s
 }
+
 
 }
 
