@@ -228,7 +228,7 @@
   </section>
 
   <div class="live-withdraw">
-    <h3>Live Withdraw</h3>
+    <h3>Live Deposit & Withdraw</h3>
     <div id="withdraw-list"></div>
   </div>
 
@@ -289,7 +289,9 @@
       const div = document.createElement("div");
       div.className = "withdraw-item";
       const isNew = Math.random() < 0.3;
-      div.innerHTML = `${randomUsername()} withdraw Rp ${randomAmount().toLocaleString('id-ID')}` +
+      div.innerHTML = `${randomUsername()} Deposit Rp ${randomAmount().toLocaleString('id-ID')}` +
+        (isNew ? ` <span class="new-tag">NEW</span>` : '');
+      div.innerHTML = `${randomUsername()} Withdraw Rp ${randomAmount().toLocaleString('id-ID')}` +
         (isNew ? ` <span class="new-tag">NEW</span>` : '');
       if (list.children.length >= 5) list.removeChild(list.children[0]);
       list.appendChild(div);
