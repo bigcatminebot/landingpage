@@ -289,40 +289,52 @@
   </footer>
 
   <script>
-    let slideIndex = 0;
-const slider = document.getElementById('slider');
-const totalSlides = slider.children.length;
+    const dotsContainer = document.getElementById("slider-dots");
 
-let transitionInProgress = false;
+// Buat dot indicator sesuai jumlah slide
+for (let i = 0; i < totalSlides; i++) {
+  const dot = document.createElement("span");
+  dot.addEventListener("click", () => showSlide(i));
+  dotsContainer.appendChild(dot);
+}
+
+// Fungsi untuk update class 'active' di dot
+function updateDots() {
+  const dots = dotsContainer.children;
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].classList.toggle('active', i === slideIndex);
+  }
+}
 
 function showSlide(index) {
   if (transitionInProgress) return;
   transitionInProgress = true;
 
   slideIndex = (index + totalSlides) % totalSlides;
-  slider.style.transform = `translateX(-${slideIndex * 100}vw)`; // <- 100vw lebih tepat
+  slider.style.transform = `translateX(-${slideIndex * 100}vw)`;
+  updateDots();
+
   setTimeout(() => {
     transitionInProgress = false;
-  }, 600); // 600ms cukup untuk transisi 0.5s
+  }, 600);
 }
 
+// Jalankan updateDots pertama kali
+updateDots();
 
-}
-
-// Fungsi untuk melanjutkan ke slide berikutnya
-function nextSlide() { 
-  showSlide(slideIndex + 1); 
-}
-
-// Fungsi untuk kembali ke slide sebelumnya
-function prevSlide() { 
-  showSlide(slideIndex - 1); 
-}
-
-// Menjalankan nextSlide setiap 5 detik setelah delay 5 detik
-setInterval(() => {
+// Autoplay dan pause on hover
+let autoplay = setInterval(() => {
   showSlide(slideIndex + 1);
-}, 10000); // Mengatur interval setiap 10 detik (5 detik untuk membaca event, 5 detik untuk transisi)
+}, 10000);
+
+const sliderContainer = document.querySelector('.slider-container');
+sliderContainer.addEventListener("mouseenter", () => clearInterval(autoplay));
+sliderContainer.addEventListener("mouseleave", () => {
+  autoplay = setInterval(() => {
+    showSlide(slideIndex + 1);
+  }, 10000);
+});
+
 
 // Fungsi untuk menghasilkan jumlah deposit acak
   function randomDepositAmount() {
