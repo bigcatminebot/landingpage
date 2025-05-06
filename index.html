@@ -38,6 +38,12 @@
       text-decoration: none;
       border-radius: 5px;
       font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .auth-buttons a:hover {
+      background-color: #ff7f00;
+      transform: scale(1.1);
     }
 
     .slider-container {
@@ -96,18 +102,15 @@
 
     .live-withdraw {
       background-color: #fff;
-      border: 2px solid #007bff; /* Border for Live Withdraw */
+      border: 2px solid #007bff;
       border-radius: 10px;
       padding: 20px;
       margin: 20px auto;
       width: 90%;
       max-width: 600px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      overflow: hidden;
-      height: 200px;
-      position: relative;
-      max-height: 200px;
       overflow-y: auto;
+      max-height: 200px;
     }
 
     .withdraw-item {
@@ -119,7 +122,7 @@
     }
 
     .withdraw-item.new {
-      color: green; /* Color for 'NEW' entries */
+      color: green;
       font-weight: bold;
     }
 
@@ -187,20 +190,24 @@
   <div class="slider-container">
     <div class="slider" id="slider">
       <img src="slide1.jpg" alt="Slide 1">
-      <img src="slide1.jpg" alt="Slide 2">
-      <img src="slide1.jpg" alt="Slide 3">
-      <img src="slide1.jpg" alt="Slide 4">
-      <img src="slide1.jpg" alt="Slide 5">
+      <img src="slide2.jpg" alt="Slide 2">
+      <img src="slide3.jpg" alt="Slide 3">
+      <img src="slide4.jpg" alt="Slide 4">
+      <img src="slide5.jpg" alt="Slide 5">
     </div>
   </div>
 
   <section class="benefits">
     <h2>Kenapa Bergabung dengan Kami?</h2>
-    <p>Dapatkan bonus besar, event harian menarik, dan permainan fair dengan winrate tinggi! Nikmati layanan cepat, aman dan didukung oleh tim profesional 24/7.</p>
+    <p>Lorem ipsum</p>
+ <p>Lorem ipsum</p>
+    <p>Lorem ipsum</p>
+    <p>Lorem ipsum</p>
+    <p>Lorem ipsum</p>
   </section>
 
   <div class="live-withdraw" id="withdraw-list">
-    <h3>Live Withdraw</h3>
+    <h2>Live Withdraw</h2>
   </div>
 
   <section class="games-section">
@@ -222,7 +229,7 @@
   </section>
 
   <footer>
-    &copy; 2025 Nama Situs. Semua Hak Dilindungi.
+    &copy; 2025 MADU88. Semua Hak Dilindungi.
   </footer>
 
   <audio id="notifSound" src="notif.mp3" preload="auto"></audio>
@@ -269,15 +276,13 @@
       div.className = "withdraw-item";
       const username = randomUsername();
       const amount = randomAmount();
-      const isNew = Math.random() < 0.3 ? " NEW" : ""; // Randomly add "NEW"
+      const isNew = Math.random() < 0.3 ? " NEW" : "";
       div.textContent = `${username} berhasil withdraw Rp ${amount.toLocaleString('id-ID')}${isNew}`;
       
-      // Apply special styling for NEW entries
       if (isNew) div.classList.add("new");
 
       notif.play();
 
-      // Limit to 5 withdraw items at once
       while (list.children.length > 5) {
         list.removeChild(list.children[0]);
       }
@@ -285,9 +290,8 @@
       list.appendChild(div);
     }
 
-    setInterval(addWithdraw, 2000); // Random user withdrawal generation
-    for (let i = 0; i < 5; i++) addWithdraw(); // Initial withdrawal generation
-
+    setInterval(addWithdraw, 2000);
+    for (let i = 0; i < 10; i++) addWithdraw();
   </script>
 </body>
 </html>
