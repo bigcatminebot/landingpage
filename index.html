@@ -44,7 +44,7 @@
   border-radius: 7px;
   font-weight: bold;
   transition: background-color 0.3s, transform 0.3s;
-  flex: 1 0 120px; /* Responsive width */
+  flex: 1 0 70px; /* Responsive width */
   text-align: center;
 }
 
@@ -111,23 +111,48 @@
     }
 
     .benefits {
-      padding: 40px 20px;
-      text-align: center;
-      background: #fff;
-    }
+  padding: 40px 20px;
+  background: #fff;
+  text-align: center;
+}
 
-    .benefits h2 {
-      color: #cc6600;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
+.benefits-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-    .benefits p {
-      max-width: 800px;
-      margin: 10px auto;
-      font-size: 1.2rem;
-      line-height: 1.6;
-    }
+.auth-buttons {
+  display: inline-flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.auth-buttons a {
+  background-color: #ff9900;
+  color: #fff;
+  padding: 10px 18px;
+  text-decoration: none;
+  border-radius: 7px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 1rem;
+}
+
+.auth-buttons a:hover {
+  background-color: #ff7f00;
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .auth-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .auth-buttons a {
+    width: 100%;
+    max-width: 220px;
+  }
 
     .live-withdraw {
       background-color: #fff;
@@ -251,13 +276,18 @@
   </div>
 
   <section class="benefits">
+  <div class="benefits-content">
     <h2>Keuntungan Bergabung dengan Kami</h2>
-    <p>Nikmati berbagai promosi menarik, pelayanan terbaik, serta game dengan winrate tinggi untuk meningkatkan peluang kemenangan Anda. Transaksi cepat, aman, dan dukungan pelanggan 24/7 siap membantu Anda kapan saja.</p>
+    <p>
+      Nikmati berbagai promosi menarik, pelayanan terbaik, serta game dengan winrate tinggi untuk meningkatkan peluang kemenangan Anda.
+      Transaksi cepat, aman, dan dukungan pelanggan 24/7 siap membantu Anda kapan saja.
+    </p>
     <div class="auth-buttons">
       <a href="https://madu88g.store/">Login</a>
       <a href="https://madu88g.store/register">Daftar</a>
     </div>
-  </section>
+  </div>
+</section>
 
   <div class="live-withdraw">
     <h3>Live Deposit & Withdraw</h3>
