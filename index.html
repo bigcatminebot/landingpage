@@ -120,7 +120,7 @@
       justify-content: space-between;
     }
 
-    .new-tag {
+    .new {
       color: green;
       font-weight: bold;
     }
@@ -320,7 +320,7 @@
     const username = randomUsername();
     const transactionType = randomTransactionType();
     const amount = transactionType === 'Deposit' ? randomDepositAmount() : randomWithdrawAmount();
-    const isNew = Math.random() < 0.3 ? " <span class="new-tag">NEW</span>" : "";  // 30% peluang untuk "NEW"
+    const isNew = Math.random() < 0.3 ? " <span class="new">NEW</span>" : "";  // 30% peluang untuk "NEW"
 
     div.innerHTML = `${username} ${transactionType} Rp ${amount.toLocaleString('id-ID')}${isNew}`;
 
