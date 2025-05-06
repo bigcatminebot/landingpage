@@ -46,24 +46,23 @@
       transform: scale(1.1);
     }
 
-    .slider-container {
-      margin-top: 70px;
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-    }
+   .slider-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
 
-    .slider {
-      display: flex;
-      transition: transform 1s ease-in-out;
-      width: 500%;
-    }
+.slider {
+  display: flex;
+  transition: transform 3s ease-in-out;
+  width: 500%; /* 5 gambar x 100% */
+}
 
-    .slider img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
+.slider img {
+  width: 100%; /* Satu gambar per view */
+  flex-shrink: 0;
+  object-fit: cover;
+}
 
     .slider-buttons {
       position: absolute;
@@ -234,22 +233,17 @@
   <audio id="notifSound" src="notif.mp3" preload="auto"></audio>
 
   <script>
-    let slideIndex = 0;
-    const slider = document.getElementById('slider');
-    const totalSlides = slider.children.length;
+  let slideIndex = 0;
+  const slider = document.getElementById('slider');
+  const totalSlides = slider.children.length;
 
-    function showSlide(index) {
-      if (index < 0) index = totalSlides - 1;
-      if (index >= totalSlides) index = 0;
-      slideIndex = index;
-      slider.style.transform = `translateX(-${slideIndex * 100}%)`;
-    }
+  function showSlide(index) {
+    slideIndex = (index + totalSlides) % totalSlides;
+    slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+  }
 
-    function nextSlide() {
-      showSlide(slideIndex + 1);
-    }
-
-    setInterval(nextSlide, 3000);
+  function nextSlide() {
+    showSlide(slideIndex + 1);
 
     const notif = document.getElementById('notifSound');
 
