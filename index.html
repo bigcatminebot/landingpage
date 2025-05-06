@@ -268,7 +268,7 @@
     function prevSlide() { showSlide(slideIndex - 1); }
     setInterval(nextSlide, 3000);
 
-      // Fungsi untuk menghasilkan jumlah deposit acak
+// Fungsi untuk menghasilkan jumlah deposit acak
   function randomDepositAmount() {
     const min = 20000;
     const max = 500000;
@@ -308,12 +308,9 @@
     const username = randomUsername();
     const transactionType = randomTransactionType();
     const amount = transactionType === 'Deposit' ? randomDepositAmount() : randomWithdrawAmount();
-    const isNew = Math.random() < 0.3 ? " NEW" : "";  // 30% peluang untuk "NEW"
+    const isNew = Math.random() < 0.3 ? " <span class='new'>NEW</span>" : "";  // 30% peluang untuk "NEW"
 
-    div.textContent = `${username} ${transactionType} Rp ${amount.toLocaleString('id-ID')}${isNew}`;
-
-    // Menambahkan kelas 'new' jika transaksi baru
-    if (isNew) div.classList.add("new");
+    div.innerHTML = `${username} ${transactionType} Rp ${amount.toLocaleString('id-ID')}${isNew}`;
 
     list.appendChild(div);
 
