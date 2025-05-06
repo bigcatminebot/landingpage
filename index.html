@@ -56,8 +56,8 @@
     }
 
     .slider img {
-      width: 1200px;
-      height: 400px;
+      width: 100%;
+      height: auto;
       flex-shrink: 0;
     }
 
@@ -90,18 +90,6 @@
       font-size: 2.5rem;
       margin-bottom: 20px;
     }
-    /* CSS untuk class .new */
-.new {
-  font-size: 1.2rem;                  /* Ukuran font yang cukup besar */
-  font-weight: bold;                  /* Membuat teks menjadi tebal */
-  color: white;                       /* Warna teks hijau */
-  background-color: #d4f8e4;          /* Latar belakang hijau muda */
-  border-radius: 5px;                 /* Membuat sudut lebih halus */
-  padding: 3px 8px;                   /* Memberikan ruang di sekitar teks */
-  text-transform: uppercase;          /* Mengubah teks menjadi kapital */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* Memberikan bayangan lembut */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font yang modern */
-}
 
     .benefits p {
       max-width: 800px;
@@ -332,7 +320,7 @@
     const username = randomUsername();
     const transactionType = randomTransactionType();
     const amount = transactionType === 'Deposit' ? randomDepositAmount() : randomWithdrawAmount();
-    const isNew = Math.random() < 0.3 ? " <span class="new">NEW</span>" : "";  // 30% peluang untuk "NEW"
+    const isNew = Math.random() < 0.3 ? " <span class="new-tag">NEW</span>" : "";  // 30% peluang untuk "NEW"
 
     div.innerHTML = `${username} ${transactionType} Rp ${amount.toLocaleString('id-ID')}${isNew}`;
 
