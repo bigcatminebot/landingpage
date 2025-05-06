@@ -45,21 +45,23 @@
     }
 
     .slider-container {
-      overflow: hidden;
-      position: relative;
-    }
+  width: 100%;
+  overflow: hidden;
+}
 
-    .slider {
-      display: flex;
-      transition: transform 4s;
-      width: 100%;
-    }
+.slider {
+  display: flex;
+  width: 500%; /* karena ada 5 gambar */
+  transition: transform 5s ease-in-out;
+}
 
-    .slider img {
-      width: 100%;
-      height: auto;
-      flex-shrink: 0;
-    }
+.slider img {
+  width: 100vw;
+  height: auto;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
 
     .slider-buttons {
       position: absolute;
@@ -320,7 +322,7 @@
     const username = randomUsername();
     const transactionType = randomTransactionType();
     const amount = transactionType === 'Deposit' ? randomDepositAmount() : randomWithdrawAmount();
-    const isNew = Math.random() < 0.3 ? " <span class="new">NEW</span>" : "";  // 30% peluang untuk "NEW"
+    const isNew = Math.random() < 0.3 ? ' <span class="new">NEW</span>' : '';
 
     div.innerHTML = `${username} ${transactionType} Rp ${amount.toLocaleString('id-ID')}${isNew}`;
 
