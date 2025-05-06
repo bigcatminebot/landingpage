@@ -49,13 +49,14 @@
 
     .slider {
       display: flex;
-      transition: transform 3s ease-in-out;
+      transition: transform 1s ease-in-out;
       width: 500%;
     }
 
     .slider img {
       width: 100%;
       height: auto;
+      object-fit: cover;
     }
 
     .slider-buttons {
@@ -105,6 +106,8 @@
       overflow: hidden;
       height: 200px;
       position: relative;
+      max-height: 200px;
+      overflow-y: auto;
     }
 
     .withdraw-item {
@@ -116,11 +119,8 @@
     }
 
     .withdraw-item.new {
-      border: 2px solid green; /* Green border for 'NEW' entries */
-    }
-
-    .withdraw-item.old {
-      border: 2px solid red; /* Red border for non-'NEW' entries */
+      color: green; /* Color for 'NEW' entries */
+      font-weight: bold;
     }
 
     @keyframes scrollFade {
@@ -176,7 +176,7 @@
 <body>
   <header>
     <div class="logo">
-      <img src="logo.jpg" alt="Logo">
+      <img src="logo-white.png" alt="Logo">
     </div>
     <div class="auth-buttons">
       <a href="#">Login</a>
@@ -187,14 +187,10 @@
   <div class="slider-container">
     <div class="slider" id="slider">
       <img src="slide1.jpg" alt="Slide 1">
-      <img src="slide1.jpg" alt="Slide 2">
-      <img src="slide1.jpg" alt="Slide 3">
-      <img src="slide1.jpg" alt="Slide 4">
-      <img src="slide1.jpg" alt="Slide 5">
-    </div>
-    <div class="slider-buttons">
-      <button onclick="prevSlide()">&#10094;</button>
-      <button onclick="nextSlide()">&#10095;</button>
+      <img src="slide2.jpg" alt="Slide 2">
+      <img src="slide3.jpg" alt="Slide 3">
+      <img src="slide4.jpg" alt="Slide 4">
+      <img src="slide5.jpg" alt="Slide 5">
     </div>
   </div>
 
@@ -247,11 +243,7 @@
       showSlide(slideIndex + 1);
     }
 
-    function prevSlide() {
-      showSlide(slideIndex - 1);
-    }
-
-    setInterval(nextSlide, 5000);
+    setInterval(nextSlide, 3000);
 
     const notif = document.getElementById('notifSound');
 
@@ -277,10 +269,12 @@
       div.className = "withdraw-item";
       const username = randomUsername();
       const amount = randomAmount();
-      const isNew = Math.random() < 0.3 ? " NEW" : "";
+      const isNew = Math.random() < 0.3 ? " NEW" : ""; // Randomly add "NEW"
       div.textContent = `${username} berhasil withdraw Rp ${amount.toLocaleString('id-ID')}${isNew}`;
+      
+      // Apply special styling for NEW entries
       if (isNew) div.classList.add("new");
-      else div.classList.add("old");
+
       notif.play();
 
       // Limit to 5 withdraw items at once
