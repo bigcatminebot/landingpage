@@ -48,9 +48,11 @@
       width: 100%;
       overflow: hidden;
     }
-    .slider {
-      display: flex;
-      width: 500%; /* Adjust based on the number of images */
+   .slider {
+  display: flex;
+  width: 500vw; /* Sesuai jumlah gambar */
+  transition: transform 0.5s ease-in-out; /* Tambahkan ini */
+}
     }
     .slider img {
       width: 100vw;
@@ -274,17 +276,16 @@ const totalSlides = slider.children.length;
 
 let transitionInProgress = false;
 
-function showSlide(index) {
-  if (transitionInProgress) return; // Jangan lakukan transisi jika sudah ada yang berlangsung
+ffunction showSlide(index) {
+  if (transitionInProgress) return;
   transitionInProgress = true;
 
   slideIndex = (index + totalSlides) % totalSlides;
-  slider.style.transform = `translateX(-${slideIndex * 100}%)`;
-
-  // Set delay untuk kembali ke slide pertama setelah slide terakhir
+  slider.style.transform = `translateX(-${slideIndex * 100}vw)`; // <- 100vw lebih tepat
   setTimeout(() => {
     transitionInProgress = false;
-  }, 5000); // Delay 5 detik untuk memberi kesempatan melihat event
+  }, 600); // 600ms cukup untuk transisi 0.5s
+}
 
 }
 
