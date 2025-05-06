@@ -95,7 +95,7 @@
 
     .live-withdraw {
       background-color: #fff;
-      border: 2px solid #ff9900;
+      border: 2px solid #007bff; /* Border for Live Withdraw */
       border-radius: 10px;
       padding: 20px;
       margin: 20px auto;
@@ -113,6 +113,14 @@
       border-bottom: 1px dashed #ccc;
       font-size: 1rem;
       animation: scrollFade 0.5s ease forwards;
+    }
+
+    .withdraw-item.new {
+      border: 2px solid green; /* Green border for 'NEW' entries */
+    }
+
+    .withdraw-item.old {
+      border: 2px solid red; /* Red border for non-'NEW' entries */
     }
 
     @keyframes scrollFade {
@@ -168,7 +176,7 @@
 <body>
   <header>
     <div class="logo">
-      <img src="logo-white.png" alt="Logo">
+      <img src="logo.jpg" alt="Logo">
     </div>
     <div class="auth-buttons">
       <a href="#">Login</a>
@@ -243,7 +251,7 @@
       showSlide(slideIndex - 1);
     }
 
-    setInterval(nextSlide, 3000);
+    setInterval(nextSlide, 5000);
 
     const notif = document.getElementById('notifSound');
 
@@ -269,12 +277,15 @@
       div.className = "withdraw-item";
       const username = randomUsername();
       const amount = randomAmount();
-      const isNew = Math.random() < 0.3 ? "NEW" : "";
+      const isNew = Math.random() < 0.3 ? " NEW" : "";
       div.textContent = `${username} berhasil withdraw Rp ${amount.toLocaleString('id-ID')}${isNew}`;
+      if (isNew) div.classList.add("new");
+      else div.classList.add("old");
       notif.play();
 
-      while (list.children.length > 6) {
-        list.removeChild(list.children[1]);
+      // Limit to 5 withdraw items at once
+      while (list.children.length > 5) {
+        list.removeChild(list.children[0]);
       }
 
       list.appendChild(div);
