@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Landing Page Promo</title>
   <style>
     body {
@@ -19,10 +19,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 0;
-      width: 100%;
       z-index: 1000;
     }
 
@@ -43,30 +41,24 @@
 
     .auth-buttons a:hover {
       background-color: #ff7f00;
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     .slider-container {
       overflow: hidden;
-      width: 100%;
-      max-height: 300px;
       position: relative;
-      margin-top: 70px;
     }
 
     .slider {
       display: flex;
-      transition: transform 0.8s ease-in-out;
-      width: 500%;
+      transition: transform 1s ease-in-out;
+      width: 100%;
     }
 
     .slider img {
       width: 100%;
-      height: auto;
-      max-height: 300px;
       object-fit: cover;
       flex-shrink: 0;
-      border-radius: 10px;
     }
 
     .slider-buttons {
@@ -88,14 +80,22 @@
     }
 
     .benefits {
-      padding: 30px 20px;
+      padding: 40px 20px;
       text-align: center;
-      background: #fff3e0;
+      background: #fff;
     }
 
     .benefits h2 {
       color: #cc6600;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .benefits p {
+      max-width: 800px;
+      margin: 10px auto;
+      font-size: 1.2rem;
+      line-height: 1.6;
     }
 
     .live-withdraw {
@@ -103,158 +103,128 @@
       border: 2px solid #007bff;
       border-radius: 10px;
       padding: 20px;
-      margin: 20px auto;
+      margin: 40px auto;
       width: 90%;
       max-width: 600px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .withdraw-item {
+      margin: 10px 0;
+      padding: 10px;
+      background: #f1f1f1;
+      border-left: 5px solid #007bff;
+      border-radius: 5px;
+      animation: scrollFade 0.5s ease forwards;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .new-tag {
+      color: green;
+      font-weight: bold;
     }
 
     #withdraw-list {
       max-height: 160px;
       overflow-y: auto;
-      margin-top: 10px;
-    }
-
-    .withdraw-item {
-      animation: scrollFade 0.5s ease forwards;
-      margin-bottom: 6px;
-    }
-
-    .withdraw-item .new-badge {
-      color: green;
-      font-weight: bold;
-    }
-
-    @keyframes scrollFade {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     .games-section {
-      padding: 30px 20px;
-      background-color: #f5f5f5;
+      padding: 40px 20px;
+      background-color: #f9f9f9;
       text-align: center;
     }
 
     .games-section h2 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: #333;
+      margin-bottom: 20px;
     }
 
     .games-list {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       gap: 20px;
-      margin-top: 20px;
+      justify-content: center;
     }
 
     .game-card {
-      background-color: #fff;
+      background: white;
+      padding: 15px;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      width: 150px;
-      padding: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 160px;
     }
 
     .game-card img {
       width: 100%;
-      border-radius: 8px;
-    }
-
-    .game-card p {
-      margin: 5px 0 0;
-      font-size: 0.9rem;
-      color: #28a745;
-      border: 2px solid #28a745;
-      padding: 3px;
       border-radius: 5px;
-      animation: pulse 1.5s infinite;
     }
 
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
-      }
-      70% {
-        box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
-      }
+    .winrate {
+      margin-top: 10px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .winrate::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, green 0%, lime 100%);
+      animation: loading 2s infinite;
+    }
+
+    @keyframes loading {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes scrollFade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     footer {
-      text-align: center;
-      padding: 20px;
       background-color: #222;
       color: #ccc;
-    }
-
-    @media (max-width: 768px) {
-      .slider-container {
-        max-height: 200px;
-      }
-
-      .slider img {
-        max-height: 200px;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .auth-buttons {
-        margin-top: 10px;
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-      }
-
-      .games-list {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .game-card {
-        width: 90%;
-      }
+      text-align: center;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">
-      <img src="logo.jpg" alt="Logo" />
+      <img src="logo-putih.png" alt="Logo">
     </div>
     <div class="auth-buttons">
-      <a href="#">Login</a>
-      <a href="#">Daftar</a>
+      <a href="#login">Login</a>
+      <a href="#daftar">Daftar</a>
     </div>
   </header>
 
   <div class="slider-container">
     <div class="slider" id="slider">
-      <img src="https://files.sitestatic.net/banners/20250309190131000000e519171f9a__MADU88__1920x430.png" alt="Slide 1" />
-      <img src="https://files.sitestatic.net/banners/20250309190152000000da100691a8__MADU88__1920x430.png" alt="Slide 2" />
-      <img src="https://files.sitestatic.net/banners/202503091859380000003b13fc21b4__MADU88__1920x430.png" alt="Slide 3" />
-      <img src="https://files.sitestatic.net/banners/20250309190230000000745c694de1__MADU88__1920x430.png" alt="Slide 4" />
-      <img src="https://files.sitestatic.net/banners/627f733d39454_minimal%20deposit.jpg" alt="Slide 5" />
+      <img src="https://via.placeholder.com/1200x400?text=Promo+1" alt="Slide 1">
+      <img src="https://via.placeholder.com/1200x400?text=Promo+2" alt="Slide 2">
+      <img src="https://via.placeholder.com/1200x400?text=Promo+3" alt="Slide 3">
+      <img src="https://via.placeholder.com/1200x400?text=Promo+4" alt="Slide 4">
+      <img src="https://via.placeholder.com/1200x400?text=Promo+5" alt="Slide 5">
+    </div>
+    <div class="slider-buttons">
+      <button onclick="prevSlide()">&#10094;</button>
+      <button onclick="nextSlide()">&#10095;</button>
     </div>
   </div>
 
   <section class="benefits">
     <h2>Keuntungan Bergabung dengan Kami</h2>
-    <p>Promo Cashback dan Bonus Member Baru hingga Rp 1.000.000</p>
-    <p>Event Harian dan Mingguan dengan Hadiah Jutaan Rupiah</p>
-    <p>Layanan Pelanggan 24 Jam dan Penarikan Cepat</p>
+    <p>Nikmati berbagai promosi menarik, pelayanan terbaik, serta game dengan winrate tinggi untuk meningkatkan peluang kemenangan Anda. Transaksi cepat, aman, dan dukungan pelanggan 24/7 siap membantu Anda kapan saja.</p>
   </section>
 
   <div class="live-withdraw">
@@ -263,79 +233,71 @@
   </div>
 
   <section class="games-section">
-    <h2>Game dengan Tingkat Kemenangan Tinggi</h2>
+    <h2>Game Slot Winrate Tinggi</h2>
     <div class="games-list">
       <div class="game-card">
-        <img src="https://upload.wikimedia.org/wikipedia/en/1/17/Pragmatic_Play_Logo.png" alt="Pragmatic Play" />
-        <p>Winrate: 94%</p>
+        <img src="https://upload.wikimedia.org/wikipedia/en/1/1e/Pragmatic_Play_logo.png" alt="Pragmatic">
+        <div class="winrate">Winrate: 94%</div>
       </div>
       <div class="game-card">
-        <img src="https://upload.wikimedia.org/wikipedia/en/f/f9/Habanero_logo.png" alt="Habanero" />
-        <p>Winrate: 93%</p>
+        <img src="https://upload.wikimedia.org/wikipedia/en/4/49/PG_Soft_logo.png" alt="PG Soft">
+        <div class="winrate">Winrate: 93%</div>
       </div>
       <div class="game-card">
-        <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/PG_Soft_Logo.png" alt="PG Soft" />
-        <p>Winrate: 95%</p>
+        <img src="https://upload.wikimedia.org/wikipedia/en/7/78/Habanero_logo.png" alt="Habanero">
+        <div class="winrate">Winrate: 92%</div>
       </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2025 MADU88. Semua Hak Dilindungi.
+    &copy; 2025 Madu88. Semua Hak Dilindungi.
   </footer>
 
-  <audio id="notifSound" src="notif.mp3" preload="auto"></audio>
-
   <script>
-    const slider = document.getElementById("slider");
     let slideIndex = 0;
+    const slider = document.getElementById('slider');
+    const totalSlides = slider.children.length;
 
     function showSlide(index) {
-      const total = slider.children.length;
-      slideIndex = (index + total) % total;
+      slideIndex = (index + totalSlides) % totalSlides;
       slider.style.transform = `translateX(-${slideIndex * 100}%)`;
     }
 
-    function nextSlide() {
-      showSlide(slideIndex + 1);
-    }
-
+    function nextSlide() { showSlide(slideIndex + 1); }
+    function prevSlide() { showSlide(slideIndex - 1); }
     setInterval(nextSlide, 3000);
 
     function randomUsername() {
-      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      let name = "";
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let username = '';
       for (let i = 0; i < 3; i++) {
-        name += chars.charAt(Math.floor(Math.random() * chars.length));
+        username += chars[Math.floor(Math.random() * chars.length)];
       }
-      return name + "****";
+      return username + '****';
     }
 
     function randomAmount() {
-      return Math.floor(Math.random() * (2000000 - 50000) / 1000) * 1000 + 50000;
+      const min = 50000;
+      const max = 2000000;
+      const step = 1000;
+      return Math.floor(Math.random() * ((max - min) / step)) * step + min;
     }
 
     function addWithdraw() {
       const list = document.getElementById("withdraw-list");
       const div = document.createElement("div");
-      const username = randomUsername();
-      const amount = randomAmount();
-      const isNew = Math.random() < 0.3;
-
       div.className = "withdraw-item";
-      div.innerHTML = `${username} berhasil withdraw Rp ${amount.toLocaleString("id-ID")} ${isNew ? '<span class="new-badge">NEW</span>' : ''}`;
-
-      document.getElementById("notifSound").play();
-
-      if (list.children.length >= 6) {
-        list.removeChild(list.children[0]);
-      }
-
+      const isNew = Math.random() < 0.3;
+      div.innerHTML = `${randomUsername()} withdraw Rp ${randomAmount().toLocaleString('id-ID')}` +
+        (isNew ? ` <span class="new-tag">NEW</span>` : '');
+      if (list.children.length >= 5) list.removeChild(list.children[0]);
       list.appendChild(div);
+      list.scrollTop = list.scrollHeight;
     }
 
-    setInterval(addWithdraw, 3000);
-    for (let i = 0; i < 6; i++) addWithdraw();
+    setInterval(addWithdraw, 2000);
+    for (let i = 0; i < 5; i++) addWithdraw();
   </script>
 </body>
 </html>
