@@ -51,8 +51,8 @@
 
 .slider {
   display: flex;
-  width: 500%; /* karena ada 5 gambar */
-  transition: transform 3s linear;
+  width: 500%; /* 5 gambar */
+  transition: transform 3s linear; /* Transisi dengan linear */
 }
 
 .slider img {
@@ -272,17 +272,39 @@
 
   <script>
     let slideIndex = 0;
-    const slider = document.getElementById('slider');
-    const totalSlides = slider.children.length;
+const slider = document.getElementById('slider');
+const totalSlides = slider.children.length;
 
-    function showSlide(index) {
-      slideIndex = (index + totalSlides) % totalSlides;
-      slider.style.transform = `translateX(-${slideIndex * 100}%)`;
-    }
+let transitionInProgress = false;
 
-    function nextSlide() { showSlide(slideIndex + 1); }
-    function prevSlide() { showSlide(slideIndex - 1); }
-    setInterval(nextSlide, 5000);
+function showSlide(index) {
+  if (transitionInProgress) return; // Jangan lakukan transisi jika sudah ada yang berlangsung
+  transitionInProgress = true;
+
+  slideIndex = (index + totalSlides) % totalSlides;
+  slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+
+  // Set delay untuk kembali ke slide pertama setelah slide terakhir
+  setTimeout(() => {
+    transitionInProgress = false;
+  }, 5000); // Delay 5 detik untuk memberi kesempatan melihat event
+
+}
+
+// Fungsi untuk melanjutkan ke slide berikutnya
+function nextSlide() { 
+  showSlide(slideIndex + 1); 
+}
+
+// Fungsi untuk kembali ke slide sebelumnya
+function prevSlide() { 
+  showSlide(slideIndex - 1); 
+}
+
+// Menjalankan nextSlide setiap 5 detik setelah delay 5 detik
+setInterval(() => {
+  showSlide(slideIndex + 1);
+}, 10000); // Mengatur interval setiap 10 detik (5 detik untuk membaca event, 5 detik untuk transisi)
 
 // Fungsi untuk menghasilkan jumlah deposit acak
   function randomDepositAmount() {
