@@ -19,8 +19,10 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 1000;
     }
 
@@ -41,24 +43,26 @@
 
     .auth-buttons a:hover {
       background-color: #ff7f00;
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
     .slider-container {
-      overflow: hidden;
+      margin-top: 70px;
       position: relative;
+      overflow: hidden;
+      width: 100%;
     }
 
     .slider {
       display: flex;
-      transition: transform 3s;
-      width: 100%;
+      transition: transform 1s ease-in-out;
+      width: 500%;
     }
 
     .slider img {
       width: 100%;
+      height: auto;
       object-fit: cover;
-      flex-shrink: 0;
     }
 
     .slider-buttons {
@@ -79,109 +83,51 @@
       font-size: 18px;
     }
 
+    .slider-buttons button:hover {
+      background-color: #ff7f00;
+    }
+
     .benefits {
-      padding: 40px 20px;
+      padding: 30px 20px;
       text-align: center;
-      background: #fff;
+      background: #fff3e0;
     }
 
     .benefits h2 {
       color: #cc6600;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+      font-size: 2rem;
     }
 
     .benefits p {
       max-width: 800px;
       margin: 10px auto;
-      font-size: 1.2rem;
-      line-height: 1.6;
+      font-size: 1.1rem;
     }
 
-    .live-withdraw {
+    .live-deposit-withdraw {
       background-color: #fff;
       border: 2px solid #007bff;
       border-radius: 10px;
       padding: 20px;
-      margin: 40px auto;
+      margin: 20px auto;
       width: 90%;
       max-width: 600px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-height: 250px;
+      overflow-y: auto;
     }
 
     .withdraw-item {
       margin: 10px 0;
       padding: 10px;
-      background: #f1f1f1;
-      border-left: 5px solid #007bff;
-      border-radius: 5px;
+      border-bottom: 1px dashed #ccc;
+      font-size: 1rem;
       animation: scrollFade 0.5s ease forwards;
-      display: flex;
-      justify-content: space-between;
     }
 
-    .new-tag {
+    .withdraw-item.new {
       color: green;
       font-weight: bold;
-    }
-
-    #withdraw-list {
-      max-height: 160px;
-      overflow-y: auto;
-    }
-
-    .games-section {
-      padding: 40px 20px;
-      background-color: #f9f9f9;
-      text-align: center;
-    }
-
-    .games-section h2 {
-      font-size: 2.5rem;
-      color: #333;
-      margin-bottom: 20px;
-    }
-
-    .games-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .game-card {
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      width: 160px;
-    }
-
-    .game-card img {
-      width: 100%;
-      border-radius: 5px;
-    }
-
-    .winrate {
-      margin-top: 10px;
-      font-weight: bold;
-      position: relative;
-    }
-
-    .winrate::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      height: 3px;
-      width: 100%;
-      background: linear-gradient(90deg, green 0%, lime 100%);
-      animation: loading 2s infinite;
-    }
-
-    @keyframes loading {
-      0% { width: 0%; }
-      100% { width: 100%; }
     }
 
     @keyframes scrollFade {
@@ -189,11 +135,66 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    .game-section {
+      padding: 30px 20px;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+
+    .game-section h2 {
+      font-size: 2rem;
+      color: #333;
+    }
+
+    .games-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .game-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 150px;
+      padding: 10px;
+      position: relative;
+    }
+
+    .game-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .game-card p {
+      margin: 5px 0 0;
+      font-size: 0.9rem;
+    }
+
+    .winrate {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background-color: #007bff;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+
     footer {
-      background-color: #222;
-      color: #ccc;
       text-align: center;
       padding: 20px;
+      background-color: #222;
+      color: #ccc;
+    }
+
+    @media screen and (max-width: 768px) {
+      .slider-container {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -203,56 +204,60 @@
       <img src="logo.jpg" alt="Logo">
     </div>
     <div class="auth-buttons">
-      <a href="https://madu88g.store/">Login</a>
-      <a href="https://madu88g.store//register">Daftar</a>
+      <a href="https://madu88manis.com/login">Login</a>
+      <a href="https://madu88manis.com/register">Daftar</a>
     </div>
   </header>
 
   <div class="slider-container">
     <div class="slider" id="slider">
-      <img src="slide2.jpg" alt="Slide 1">
-      <img src="slide3.jpg" alt="Slide 2">
-      <img src="slide4.jpg" alt="Slide 3">
-      <img src="slide5.jpg" alt="Slide 4">
-      <img src="slide6.jpg" alt="Slide 5">
+      <img src="slide1.jpg" alt="Slide 1">
+      <img src="slide2.jpg" alt="Slide 2">
+      <img src="slide3.jpg" alt="Slide 3">
+      <img src="slide4.jpg" alt="Slide 4">
+      <img src="slide5.jpg" alt="Slide 5">
     </div>
     <div class="slider-buttons">
-      <button onclick="prevSlide()">&#10094;</button>
-      <button onclick="nextSlide()">&#10095;</button>
+      <button onclick="prevSlide()">Prev</button>
+      <button onclick="nextSlide()">Next</button>
     </div>
   </div>
 
   <section class="benefits">
-    <h2>Keuntungan Bergabung dengan Kami</h2>
-    <p>Nikmati berbagai promosi menarik, pelayanan terbaik, serta game dengan winrate tinggi untuk meningkatkan peluang kemenangan Anda. Transaksi cepat, aman, dan dukungan pelanggan 24/7 siap membantu Anda kapan saja.</p>
+    <h2>Kenapa Bergabung dengan Kami?</h2>
+    <p>Dapatkan bonus besar, event harian menarik, dan permainan fair dengan winrate tinggi! Nikmati layanan cepat, aman dan didukung oleh tim profesional 24/7.</p>
   </section>
 
-  <div class="live-withdraw">
+  <div class="live-deposit-withdraw" id="withdraw-list">
     <h3>Live Deposit & Withdraw</h3>
-    <div id="withdraw-list"></div>
   </div>
 
-  <section class="games-section">
-    <h2>Game Slot Winrate Tinggi</h2>
+  <section class="game-section">
+    <h2>Game dengan Tingkat Kemenangan Tinggi</h2>
     <div class="games-list">
       <div class="game-card">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmAgl0lXa37WuskBqP4Ou5OWmacrcRxcyxjg&s" alt="Pragmatic">
-        <div class="winrate">Winrate: 94%</div>
+        <img src="https://via.placeholder.com/150" alt="Slot Game 1">
+        <p>Winrate: 94%</p>
+        <div class="winrate">Loading...</div>
       </div>
       <div class="game-card">
-        <img src="https://upload.wikimedia.org/wikipedia/en/4/49/PG_Soft_logo.png" alt="PG Soft">
-        <div class="winrate">Winrate: 93%</div>
+        <img src="https://via.placeholder.com/150" alt="Slot Game 2">
+        <p>Winrate: 93%</p>
+        <div class="winrate">Loading...</div>
       </div>
       <div class="game-card">
-        <img src="https://upload.wikimedia.org/wikipedia/en/7/78/Habanero_logo.png" alt="Habanero">
-        <div class="winrate">Winrate: 92%</div>
+        <img src="https://via.placeholder.com/150" alt="Slot Game 3">
+        <p>Winrate: 96%</p>
+        <div class="winrate">Loading...</div>
       </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2025 Madu88. Semua Hak Dilindungi.
+    &copy; 2025 MADU88. Semua Hak Dilindungi.
   </footer>
+
+  <audio id="notifSound" src="notif.mp3" preload="auto"></audio>
 
   <script>
     let slideIndex = 0;
@@ -260,46 +265,18 @@
     const totalSlides = slider.children.length;
 
     function showSlide(index) {
-      slideIndex = (index + totalSlides) % totalSlides;
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      slideIndex = index;
       slider.style.transform = `translateX(-${slideIndex * 100}%)`;
     }
 
-    function nextSlide() { showSlide(slideIndex + 1); }
-    function prevSlide() { showSlide(slideIndex - 1); }
-    setInterval(nextSlide, 3000);
-
-    function randomUsername() {
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-      let username = '';
-      for (let i = 0; i < 3; i++) {
-        username += chars[Math.floor(Math.random() * chars.length)];
-      }
-      return username + '****';
+    function nextSlide() {
+      showSlide(slideIndex + 1);
     }
 
-    function randomAmount() {
-      const min = 50000;
-      const max = 2000000;
-      const step = 1000;
-      return Math.floor(Math.random() * ((max - min) / step)) * step + min;
+    function prevSlide() {
+      showSlide(slideIndex - 1);
     }
 
-    function addWithdraw() {
-      const list = document.getElementById("withdraw-list");
-      const div = document.createElement("div");
-      div.className = "withdraw-item";
-      const isNew = Math.random() < 0.3;
-      div.innerHTML = `${randomUsername()} Deposit Rp ${randomAmount().toLocaleString('id-ID')}` +
-        (isNew ? ` <span class="new-tag">NEW</span>` : '');
-      div.innerHTML = `${randomUsername()} Withdraw Rp ${randomAmount().toLocaleString('id-ID')}` +
-        (isNew ? ` <span class="new-tag">NEW</span>` : '');
-      if (list.children.length >= 5) list.removeChild(list.children[0]);
-      list.appendChild(div);
-      list.scrollTop = list.scrollHeight;
-    }
-
-    setInterval(addWithdraw, 2000);
-    for (let i = 0; i < 5; i++) addWithdraw();
-  </script>
-</body>
-</html>
+    setInterval(nextSlide,
